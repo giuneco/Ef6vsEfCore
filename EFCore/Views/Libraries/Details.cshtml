@@ -1,0 +1,79 @@
+﻿@model DataAccessLayer.Model.Library
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Library</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+<div>
+    @if (Model.Books == null)
+    {
+        <h3>Books for this library have not been loaded</h3>
+    } else if (!Model.Books.Any())
+    {
+        <h3>No books in this library</h3>
+    }
+    else
+    {
+        <h3>Books in this library</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Library</th>
+                <th></th>
+            </tr>
+            @foreach (var book in Model.Books)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.Author</td>
+                    <td>
+                        @if (book.Library == null)
+                        {
+                            <span>(null)</span>
+                        }
+                        else
+                        {
+                            <span>@book.Library.Name</span>
+                        }
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Books", new {id = book.Id})">Edit</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    <div>
+        <a href="@Url.Action("Details", "Libraries", new {id = Model.Id})" class="btn btn-default">Default book loading behaviour</a>
+        <a href="@Url.Action("Details", "Libraries", new {id = Model.Id, sonLoadStrategy = 0})" class="btn btn-default">Eagerly load books</a>
+        <a href="@Url.Action("Details", "Libraries", new {id = Model.Id, sonLoadStrategy = 1})" class="btn btn-default">Explicitly load books</a>
+    </div>
+    <div style="margin-top:10px">
+        <a href="@Url.Action("Create", "Books", new {libraryId = Model.Id})" class="btn btn-primary">Add book</a>
+    </div>
+</div>

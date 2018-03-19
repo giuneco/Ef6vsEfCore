@@ -1,0 +1,80 @@
+﻿@using DataAccessLayer.Model
+@model DataAccessLayer.Model.Book
+
+@{
+    ViewData["Title"] = "Edit book";
+    var categories = ViewData["categories"] as IList<Category>;
+}
+
+<h2>Edit book</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form action="@Url.Action("Edit")" method="POST">     
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.LibraryId)
+            <div class="form-group">
+                <label class="control-label">Title</label>
+                @Html.TextBoxFor(m => m.Title, new {@class="form-control"})
+            </div>
+            <div class="form-group">
+                <label class="control-label">Author</label>
+                @Html.TextBoxFor(m => m.Author, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <h4>Categories</h4>
+    @if (Model.BookCategories == null)
+    {
+        <span>(not loaded)</span>
+    } else if (!Model.BookCategories.Any())
+    {
+        <span>(none)</span>
+    }
+    else
+    {
+        foreach (var category in Model.BookCategories)
+        {
+            <span class="label label-primary">
+                @category.Category.CategoryName
+                <form style="display: inline" action="@Url.Action("RemoveCategory")" method="POST">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="bookId" value="@Model.Id"/>
+                    <input type="hidden" name="categoryId" value="@category.CategoryId"/>
+                    <input type="submit" value="X"/>
+                </form>
+            </span>
+        }
+    }
+    <div class="well well-sm" style="margin-top:10px">
+        <h4>Add category</h4>
+        <form action="@Url.Action("AddCategory")" method="POST">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="bookId" value="@Model.Id"/>
+            <select name="categoryId" class="form-control">
+                @foreach (var category in categories)
+                {
+                    <option value="@category.CategoryId">@category.CategoryName</option>
+                }
+            </select>
+            <input type="submit" class="btn btn-primary" value="Add"/>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href="@Url.Action("Index")" class="btn btn-default">Back to List</a>
+    <a href="@Url.Action("Index", "Categories")" class="btn btn-default">Categories</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

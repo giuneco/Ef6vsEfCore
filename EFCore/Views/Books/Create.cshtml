@@ -1,0 +1,38 @@
+﻿@model BookViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create book</h2>
+
+<h4>Book for library @Model.FatherLibrary.Name</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form action="@Url.Action("Create")" method="POST">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="LibraryId" value="@Model.FatherLibrary.Id"/>
+            <div class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Title</label>
+                <input type="text" name="Title" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Author</label>
+                <input type="text" name="Author" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href="@Url.Action("Index")">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
