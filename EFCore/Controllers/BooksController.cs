@@ -135,7 +135,9 @@ namespace EFCore.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddCategory(int categoryId, int bookId)
         {
+            // To add sons to an entity, the easiest way is to specify the foreign key
             var newLink = new BookCategory() {BookId = bookId, CategoryId = categoryId};
+
             // Add can also be called on context directly
             _context.Add(newLink);
             await _context.SaveChangesAsync();

@@ -1,0 +1,24 @@
+Corsi pluralsight
+
+https://www.pluralsight.com/courses/entity-framework-core-getting-started
+https://www.pluralsight.com/courses/entity-framework-core-2-getting-started
+
+Eager, explicit, lazy loading
+
+https://docs.microsoft.com/en-us/ef/core/querying/related-data
+
+Confronto completo feature EF6/EFCore
+
+https://docs.microsoft.com/en-us/ef/efcore-and-ef6/features
+
+Guida per migrazioni
+
+http://thedatafarm.com/data-access/the-secret-to-running-ef-core-2-0-migrations-from-a-net-core-or-net-standard-class-library/
+
+Un'esperienza di passaggio a EFCore
+
+https://www.red-gate.com/simple-talk/blogs/first-experience-migrating-net-app-core/
+
+Articolo su un casistica d'uso EFCore in ottica DDD
+
+http://thedatafarm.com/uncategorized/another-use-case-for-dbcontext-add-in-efcore-and-a-ddd-win/
