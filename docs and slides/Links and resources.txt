@@ -1,24 +1,28 @@
 Corsi pluralsight
 
+Richiedono una sottoscrizione. Questi corsi descrivono le novità di EFCore (versioni 1.0 e 2.0) e come iniziare ad utilizzare questo framework. 
 https://www.pluralsight.com/courses/entity-framework-core-getting-started
 https://www.pluralsight.com/courses/entity-framework-core-2-getting-started
 
 Eager, explicit, lazy loading
-
+Documentazione ufficiale sui tre diversi tipi di caricamento delle entità correlate
 https://docs.microsoft.com/en-us/ef/core/querying/related-data
 
-Confronto completo feature EF6/EFCore
-
+EF Core vs EF6
+Una lista completa di tutte le funzionalità presenti nei due framework. Da consultare prima di iniziare un progetto in EFCore, in modo da assicurarsi che tutte le funzionalità necessarie siano presenti
 https://docs.microsoft.com/en-us/ef/efcore-and-ef6/features
 
-Guida per migrazioni
-
+Una guida per migrazioni EFCore
+In alcuni casi, la gestione delle migrazioni può riscontrare qualche problema. Sotto, un breve articolo con qualche accorgimento per far funzionare tutto al meglio.
 http://thedatafarm.com/data-access/the-secret-to-running-ef-core-2-0-migrations-from-a-net-core-or-net-standard-class-library/
 
-Un'esperienza di passaggio a EFCore
-
+Un'esperienza di passaggio di un’applicazione da EF6 a EFCore
+Un articolo che ho trovato interessante - utile sia per chi vuole effettuare un passaggio analogo, sia per un ulteriore confronto tra EFCore ed EF6
 https://www.red-gate.com/simple-talk/blogs/first-experience-migrating-net-app-core/
 
-Articolo su un casistica d'uso EFCore in ottica DDD
+Configurazioni ad hoc per mapping tabelle ed entità
+Un articolo con maggiori dettagli su come definire mapping personalizzati per le entità del modello
+https://scottsauber.com/2017/09/11/customizing-ef-core-2-0-with-ientitytypeconfiguration/
 
+Articolo su un casistica d'uso EFCore in ottica DDD
 http://thedatafarm.com/uncategorized/another-use-case-for-dbcontext-add-in-efcore-and-a-ddd-win/
